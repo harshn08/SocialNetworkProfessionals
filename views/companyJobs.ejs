@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Bootstrap Google Plus Theme</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top header">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="#" class="navbar-brand">LinkedIn Prototype</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse1">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	</nav>
+	<div class="navbar navbar-default" id="subnav">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/companyhomepage" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus dropdown-toggle">Home</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse2">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--main-->
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-md-8 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Posted Jobs</h4>
+					</div>
+					<div class="panel-body">
+						<!-- Job list -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/row-->
+
+		<!--/col-->
+
+		<!--/col-->
+
+	</div>
+	<!--/main-->
+	<!-- script references -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			getCompanyJobs();
+
+		});
+
+		function getCompanyJobs() {
+			
+			$.get("/company/jobs", function(jobList) {
+				showJobs(jobList);
+
+			});
+		}
+
+
+		function showJobs(jobList) {
+			$(".panel-body").empty();
+			console.log("Response came for  " + jobList);
+			var i;
+			var list = '';
+			var jobURL;
+			var deleteJobURL;
+
+			for (i = 0; i < jobList.length; ++i) {
+				jobURL = '/showJobDetailsPage/' + jobList[i].jobId;
+				deleteJobURL = '/company/'+jobList[i].companyId+'/jobs/'+jobList[i].jobId;
+				if (i % 3 == 0) {
+					list = list + '<div class="row">';
+				}
+				list = list
+						+ '<div class="col-xs-4"><a class="center-block" href="'+jobURL+'">'
+						+ jobList[i].companyName + '</a>'
+						+ '<a class="center-block" href="'+jobURL+'">'
+						+ jobList[i].jobTitle + '</a>' + '<p>'
+						+ jobList[i].location + '</p><form action="'+deleteJobURL+'" method="get"><button class="btn btn-success pull-left" type="submit">Delete</button></form></div>';
+				if ((i + 1) % 3 == 0) {
+					list = list + '</div><br>';
+
+				}
+			}
+			if (jobList.length > 0) {
+				$(".panel-body").append(list);
+			} else {
+				$(".panel-body").append("<p>No Jobs available.</p>");
+			}
+
+		}
+	</script>
+</body>
+</html>

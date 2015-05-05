@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>LinkedIn Prototype</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top header">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/homepage" class="navbar-brand">Linkedin Prototype</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse1">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+
+			</div>
+		</div>
+	</nav>
+	<div class="navbar navbar-default" id="subnav">
+		<div class="col-md-12">
+			<div class="navbar-header">
+				<a href="" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus dropdown-toggle"
+					data-toggle="dropdown"><i class="glyphicon glyphicon-home"
+					style="color: #dd1111;"></i> Home <small><i
+						class="glyphicon glyphicon-chevron-down"></i></small></a>
+				<ul class="nav dropdown-menu">
+					<li id="profile"><a href="/userprofile"><i
+							class="glyphicon glyphicon-user" style="color: #1111dd;"></i>
+							Profile</a></li>
+					<li id="job"><a href="/showJobs"><i
+							class="glyphicon glyphicon-inbox" style="color: #11dd11;"></i>
+							Jobs</a></li>
+					<li class="nav-divider"></li>
+					<li id="search"><a href="/searchPage"><i
+							class="glyphicon glyphicon-cog" style="color: #dd1111;"></i>
+							Search</a></li>
+				</ul>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbar-collapse2">
+				<ul class="nav navbar-nav navbar-right">
+					<%if((typeof lastLoggedIn != 'undefined') && lastLoggedIn != ""){%>
+					<li><a>Last Logged in : <%=lastLoggedIn%></a></li> <%}%>
+					<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--main-->
+	<div class="container" id="main">
+
+
+		<div class="row">
+			<div class="col-md-8 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-body">
+
+						<form>
+
+							<label for="sel1">Expected Position :</label> <select
+								class="form-control" id="sel1">
+								<option>CEO</option>
+								<option>CFO</option>
+								<option>CIO</option>
+								<option>COO</option>
+								<option>CTO</option>
+								<option>Director_of_HR</option>
+								<option>Senior_Manager</option>
+								<option>VP_of_Products</option>
+								<option>FInance_Manager</option>
+								<option>VP_of_Operations</option>
+								<option>SVP_of_Innovation</option>
+								<option>Senior_HR_Manager</option>
+								<option>Senior_QE_Manager</option>
+								<option>Started_a_Company</option>
+								<option>VP_of_Engineering</option>
+								<option>CEO_of_own_company</option>
+								<option>Innovation_Manager</option>
+								<option>SVP_of_Engineering</option>
+								<option>Director_of_FInance</option>
+								<option>Director_of_Products</option>
+								<option>Director_of_Operations</option>
+								<option>Director_of_Engineering</option>
+							</select> <br />
+							<button class="btn btn-success pull-right" type="button"
+								onclick="getCareerPath()">Get Career Path</button>
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Recommended career path</h4>
+					</div>
+					<div class="panel-body" id="paths"></div>
+				</div>
+			</div>
+		</div>
+		<!--/row-->
+
+		<!--/col-->
+
+		<!--/col-->
+
+	</div>
+	<!--/main-->
+	<!-- script references -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//getAllJobs();
+
+		});
+
+		function getCareerPath() {
+			$("#paths").empty();
+			var expectedPos = $("#sel1").val();
+			console.log("Position____" + expectedPos);
+			var url = '/getCareerPath/' + expectedPos;
+			$.get(url, function(data) {
+				if (data.length != 0) {
+					console.log("Path 1_________" + data.path1);
+					console.log("Path 2_________" + data.path2);
+					var path1 = data.path1;
+					var path2 = data.path2;
+					var careerPath1 = "";
+					var careerPath2 = "";
+					var htmlOutput = "";
+
+					for (var j = 0; j < path1.length; j++) {
+						careerPath1 = careerPath1 + path1[j] + " -> ";
+					}
+					for (var k = 0; k < path2.length; k++) {
+						careerPath2 = careerPath2 + path2[k] + " -> ";
+					}
+					htmlOutput = htmlOutput
+							+ "<br/><p style='font-weight:bold;'>"
+							+ careerPath1.substring(0, careerPath1.length - 3)
+							+ "</p></br><p style='font-weight:bold;'>"+careerPath2.substring(0, careerPath2.length - 3)+"</p>";
+					console.log(htmlOutput);
+					$("#paths").append(htmlOutput);
+				} else {
+					console.log("Inside else");
+					var htmlOutput = "<p>No matching recommendation</p>";
+					$("#paths").append(htmlOutput);
+				}
+
+			});
+		}
+	</script>
+</body>
+</html>

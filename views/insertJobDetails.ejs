@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Bootstrap Google Plus Theme</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/datepicker.css" rel="stylesheet">
+<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top header">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/homepage" class="navbar-brand">Linkedin prototype</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse1">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+
+			</div>
+		</div>
+	</nav>
+	<div class="navbar navbar-default" id="subnav">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/companyhomepage" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus dropdown-toggle">Home</a>
+					
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse2">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--main-->
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-md-8 col-sm-6">
+				<div id="msginfo"></div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Work Environment</h4>
+					</div>
+					<div class="panel-body">
+						<form action="/company/2/jobs/" method="post">
+							<div class="form-group">
+								<label for="companyName">Company - <%=companyName%></label>
+								<input type="hidden" name="companyName" value=" <%=companyName%>"/>
+							</div>
+							<div class="form-group">
+								<label for="jobTitle">Job title</label> <input type="text"
+									class="form-control" id="jobTitle" name="jobTitle">
+							</div>
+							<div class="form-group">
+								<label>Expiry Date</label>
+								
+									<input type="text" class="form-control" name="expiryDate"
+										data-date-format="yyyy-mm-dd" id="dp3">
+							
+							</div>
+							<div class="form-group">
+								<label for="exampleInputJobDesc">Job Description</label>
+								<textarea class="form-control" rows="3" name="jobDesc"
+									id="jobDesc"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="jobLocation">Location</label> <input type="text"
+									class="form-control" id="jobLocation" name="location">
+							</div>
+							
+							<button class="btn btn-success pull-right" type="submit"
+								id="btnPostJob">Post a Job</button>
+						</form>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<!--/row-->
+
+		<!--/col-->
+
+		<!--/col-->
+
+	</div>
+	<!--/main-->
+	<!-- script references -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="../js/insertJobValidation.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>LinkedIn Prototype</title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+  <script src="js/jquery-1.11.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/ajaxcalls.js"></script>
+	</head>
+	<body>
+<nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+          
+          <a href="#" class="navbar-brand">LinkedIn Prototype</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+          <i class="glyphicon glyphicon-search"></i>
+          </button>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+        </div>	
+     </div>	
+</nav>
+<div class="navbar navbar-default" id="subnav">
+    <div class="col-md-12">
+        <div class="navbar-header">
+          <a href="/companyhomepage" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle"></i> Home <small></small></a>
+          <a href="/company/logout" style="margin-left:5px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle"></i> Logout <small></small></a>
+        </div>
+    </div>	
+</div>
+
+<!--main-->
+<div class="container" id="main">
+   <!--row-->
+   <div class="row">
+   
+  	<div class="col-md-6 col-md-offset-3">
+      	 
+          <div class="well" id="cprofile"> 
+          	<div id="cform">
+	            <h4>Company Profile</h4>
+	              <form>
+	              	  <input id="companyId" type="hidden" class="form-control" value=<%= companyId %> >
+	                  <div class="form-group">
+	                  <label for="name">Company Name</label>
+	                  <input id="name" type="text" class="form-control" placeholder="Company Name">
+	                </div>
+	                <div class="form-group">
+	                  <label for="overview">Company Overview</label>
+	                  <textarea id="overviewText" class="form-control" id="overview" placeholder="Company Overview"></textarea>
+	                </div>
+	                <div class="form-group">
+	                  <label for="website">Website Links</label>
+	                  <input id="urlText" type="text" class="form-control" id="website" placeholder="Company Website Links">
+	                </div>                   
+	                  <button id="companyProfile" class="btn btn-success pull-right" type="button">Submit</button><ul class="list-inline"><li></li></ul>
+	              </form>
+              </div>
+          </div>
+      
+  	</div>
+
+  </div><!--/row-->
+    
+    <div class="clearfix"></div>
+      
+    <hr>
+    <div class="col-md-12 text-center"><p>CmpE-282 CloudServices-LinkedIn Prototype</p></div>
+    <hr>
+    
+  </div>
+</div><!--/main-->
+
+	<!-- script references -->
+	
+	</body>
+</html>

@@ -1,0 +1,30 @@
+Stanford,Boston,Yahoo,'Software Architect',Software_Engineering
+SFSU,Seattle,Facebook,Technician,'Mechanical Engineering'
+SJSU,Seattle,Yahoo,Technician,'Electrical Engineering'
+SJSU,Tempe,Google,'Software Engineer','Computer Science'
+MIT,'San Francisco',Oracle,Technician,'Mechanical Engineering'
+ASU,Seattle,Oracle,Technician,'Electrical Engineering'
+MIT,Tempe,Amazon,'Network Engineer','Electrical Engineering'
+NPU,Seattle,Facebook,'Network Engineer','Electrical Engineering'
+SFSU,'San Jose',Amazon,'Network Engineer','Electrical Engineering'
+SJSU,Boston,Oracle,'Software Developer',Software_Engineering
+SJSU,Seattle,Amazon,'Software Developer','Computer Science'
+NPU,'San Francisco',Oracle,Technician,'Mechanical Engineering'
+ASU,Tempe,Oracle,'Network Engineer','Electrical Engineering'
+MIT,'San Jose',Yahoo,'Software Architect','Computer Science'
+MIT,Boston,Amazon,'Software Engineer','Computer Science'
+SJSU,Seattle,Facebook,'Software Architect',Software_Engineering
+NPU,'San Francisco',Oracle,'Software Architect',Software_Engineering
+SJSU,'San Jose',Google,'Software Engineer','Computer Science'
+Stanford,Seattle,Facebook,Technician,'Mechanical Engineering'
+SFSU,Seattle,Amazon,'Software Engineer',Software_Engineering
+ASU,Boston,Amazon,'Software Developer',Software_Engineering
+NPU,Boston,Google,Technician,'Electrical Engineering'
+MIT,Boston,Oracle,'Software Engineer','Computer Science'
+MIT,'San Francisco',Amazon,'Product Manager','Mechanical Engineering'
+NPU,'San Francisco',Docker,'Software Developer','Computer Science'
+NPU,Boston,Facebook,'Software Architect',Software_Engineering
+Stanford,'San Francisco',Amazon,'Product Manager','Mechanical Engineering'
+ASU,'San Jose',Facebook,'Product Manager','Mechanical Engineering'
+ASU,Tempe,Yahoo,'Software Developer',Software_Engineering
+MIT,Tempe,Yahoo,'Software Architect','Computer Science'

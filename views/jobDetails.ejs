@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Bootstrap Google Plus Theme</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="../css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+          
+          <a href="/homePage" class="navbar-brand">LinkedIn Prototype</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+          <i class="glyphicon glyphicon-search"></i>
+          </button>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+          
+        
+        </div>	
+     </div>	
+</nav>
+<div class="navbar navbar-default" id="subnav">
+    <div class="col-md-12">
+        <div class="navbar-header">
+          
+        <a href="/homePage" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus dropdown-toggle">Home</a>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse2">
+          <ul class="nav navbar-nav navbar-right">
+             <li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+           </ul>
+        </div>	
+     </div>	
+</div>
+
+<!--main-->
+<div class="container" id="main">
+	<div class="row">
+		<div class="col-md-8 col-sm-6">
+			   <div class="panel panel-default">
+			   		 <div class="panel-heading"><h4><%=job.jobTitle%></h4></div>
+			   		 <div class="panel-body">
+               <form action = "/application" method = "POST">
+			   		 	   <p class="lead"><%=job.companyName%> - <%=job.location%></p>
+                 <input type = "hidden" name = "jobId" value = <%=job.jobId %>>
+                 <input type = "hidden" name = "userId" value = <%=userId %>>
+                 <input type = "hidden" name = "companyId" value = <%=job.companyId %>>
+                 <input type = "hidden" name = "companyName" value = <%=job.companyName %>>
+                 <input type = "hidden" name = "status" value = "Under Review">  
+			   		 	   <button class="btn btn-success pull-left" type="submit">Apply</button>
+               </form>
+			   		 </div>
+			   </div>
+		</div>
+	</div>
+   <div class="row">
+   <div class="col-md-8 col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Job Description</h4></div>
+   			<div class="panel-body">
+              	  <p><%=job.jobDescription%></p>
+            </div>
+   		</div>
+	</div>
+  </div><!--/row-->
+   
+  	<!--/col-->
+      
+    <!--/col-->
+
+</div><!--/main-->
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/scripts.js"></script>
+	</body>
+</html>

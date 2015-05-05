@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>LinkedIn Prototype</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	
+<body>
+	<nav class="navbar navbar-fixed-top header">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/companyhomepage" class="navbar-brand">LinkedIn
+					Prototype</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse1">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse1"></div>
+		</div>
+	</nav>
+	<div class="navbar navbar-default" id="subnav">
+		<div class="col-md-12">
+			<div class="navbar-header">
+				<a href="/companyhomepage" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus"></i> Home <small></small></a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse2">
+				<ul class="nav navbar-nav navbar-right">
+					<% if((typeof lastLoggedIn != 'undefined') && lastLoggedIn != "")
+					{%>
+
+					<li><a>Last Logged in : <%=lastLoggedIn%></a></li> <% } %>
+
+					<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" id="main">
+   		<!--row-->
+   		<div class="row">	
+   			<div class="col-md-8">
+      			<div class="well">
+      				<h4>Company Profile</h4>
+		          	<form>
+		          		<div class="form-group row">
+		          			<div class="col-xs-6 col-sm-4" >
+		          				<img id="cLogo" src="..." class="img-responsive" alt="Responsive image">
+		          			</div>
+		          				<button id="editLogo" class="btn btn-link pull-right" type="button">change logo</button><br><ul class="list-inline"><li></li></ul>
+		          		</div>
+		          		<div id="up" class="form-group" name="up" id="changeL">	</div>
+		          		<input id="companyId" type="hidden" class="form-control" value=<%= companyId %> >
+		                <div class="form-group">
+		                  <label for="companyName">Company Name</label>
+		                  <input id="name" type="text" class="form-control" disabled><button id="savename" class="btn btn-link pull-right" type="button">save</button><button id="editname" class="btn btn-link pull-right" type="button">edit</button>
+		                </div>
+		                <div class="form-group">
+		                  <label for="overview">Company Overview</label>
+		                  <textarea id="overviewText" class="form-control" id="overview" disabled></textarea><button id="saveoverview" class="btn btn-link pull-right" type="button">save</button><button id="editoverview" class="btn btn-link pull-right" type="button">edit</button>
+		                </div>
+		                <div class="form-group">
+		                  <label for="website">Website Links</label>
+		                  <input id="urlText" type="text" class="form-control" disabled><button id="saveurl" class="btn btn-link pull-right" type="button">save</button><button id="editurl" class="btn btn-link pull-right" type="button">edit</button>
+		                </div>
+		                <div class="form-group">
+		                  <label for="followers">Followers</label>
+		                  <input id="followers" type="text" class="form-control" disabled>
+		                </div>
+		            </form>
+		        </div>
+		    </div>
+
+		    <div class="col-md-4">
+				<div class="well">
+					<form class="form-horizontal" role="form">
+						<h4>Post Status</h4>
+						<div class="form-group" style="padding: 14px;">
+							<textarea id="statusText" class="form-control"
+								placeholder="Update your status"></textarea>
+						</div>
+						<button id="postStatus" class="btn btn-success pull-right"
+							type="button">Post Status</button>
+						<ul class="list-inline"><li></li></ul>
+						<hr>
+						<div class="well">
+							<ul class="list-inline">
+								<li><button class="btn btn-success pull-right" type="button"
+								id="postJob">Post Job</button></li>
+								<li>
+								<button class="btn btn-success pull-right" type="button"
+								id="viewJobs" style="margin-left:20px;">View Jobs</button>
+								</li>
+							</ul>
+						</div>
+					</form>
+					 
+				 </div>
+			</div>	
+   		</div>
+   	</div>
+<body>
+
+
+	<!-- script references -->
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/scripts.js"></script>
+	<script src="./js/ajaxcalls.js"></script>
+	<script type="text/javascript">
+		var cId = $("#companyId").val();
+		console.log("cId  " + cId);
+		if (cId === '') {
+			cId = 'junk';
+		}
+		$.ajax({
+			type : "GET",
+			url : "/company/" + cId,
+			crossDomain : true,
+			success : function(d) {
+				if (typeof d.data[0] === 'undefined') {
+					window.location = '/companyregistrationpage';
+				} else {
+					$("#name").val(d.data[0].companyName);
+					$("#overviewText").val(d.data[0].overview);
+					$("#urlText").val(d.data[0].url);
+					$("#cLogo").attr("src", d.data[0].logo);
+					$("#followers").val(d.data[0].numFollowers);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

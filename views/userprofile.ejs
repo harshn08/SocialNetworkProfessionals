@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>LinkedIn Prototype</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top header">
+		<div class="col-md-12">
+			<div class="navbar-header">
+
+				<a href="/homepage" class="navbar-brand">LinkedIn Prototype</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse1">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse1"></div>
+		</div>
+	</nav>
+	<div class="navbar navbar-default" id="subnav">
+		<div class="col-md-12">
+			<div class="navbar-header">
+				<a href="#" style="margin-left: 15px;"
+					class="navbar-btn btn btn-default btn-plus dropdown-toggle"
+					data-toggle="dropdown"><i class="glyphicon glyphicon-home"
+					style="color: #dd1111;"></i>Home<small><i
+						class="glyphicon glyphicon-chevron-down"></i></small></a>
+				<ul class="nav dropdown-menu">
+					<li id="profile"><a href="#"><i
+							class="glyphicon glyphicon-user" style="color: #1111dd;"></i>
+							Profile</a></li>
+					<!-- <li><a href="#"><i class="glyphicon glyphicon-dashboard" style="color:#0000aa;"></i> Dashboard</a></li>-->
+					<li id="job"><a href="#"><i
+							class="glyphicon glyphicon-inbox" style="color: #11dd11;"></i>
+							Jobs</a></li>
+					<li class="nav-divider"></li>
+					<li id="search"><a href="#"><i
+							class="glyphicon glyphicon-cog" style="color: #dd1111;"></i>
+							Search</a></li>
+				</ul>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="navbar-collapse2">
+
+			<ul class="nav navbar-nav navbar-right" align="right">
+				<li><a href="/careerPath" id ="careerPathButton" role="button">Career Path Explorer</a>
+				<li><a href="#" id = "jobapp" role="button" data-toggle="modal">Job Applications</a>
+				<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+			</ul>
+		</div>
+		</div>
+
+	</div>
+
+	<!--main-->
+	<div class="container" id="main">
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+
+				<div class="well">
+					<h4>About Me!</h4>
+					<form>
+						<input id="userid" type="hidden" class="form-control"
+							placeholder="Company Id" value=<%= user %> disabled>
+						<div class="form-group">
+							<label id="uname" for="companyName">User Name</label>
+							<!--  <input id="name" type="text" class="form-control" disabled><button id="savename" class="btn btn-link pull-right" type="button">save</button><button id="editname" class="btn btn-link pull-right" type="button">edit</button>-->
+							<div id="ajaxName"></div>
+
+						</div>
+
+						<div class="form-group">
+							<label for="overview">Bio</label>
+							<textarea id="bio" class="form-control" disabled></textarea>
+							<button id="saveBio" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="editBio" class="btn btn-link pull-right"
+								type="button">edit</button>
+						</div>
+						<div class="form-group">
+							<label for="website">Status</label> <input id="status"
+								type="text" class="form-control" disabled>
+							<button id="saveStatus" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="editStatus" class="btn btn-link pull-right"
+								type="button">edit</button>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+			<div class="col-md-4 col-sm-6">
+
+				<div class="well">
+					<form class="form-horizontal" role="form">
+						<h4>Post Status</h4>
+						<div class="form-group" style="padding: 14px;">
+							<textarea id="statusText" class="form-control"
+								placeholder="Update your status"></textarea>
+						</div>
+						<button id="postStatus" class="btn btn-success pull-right"
+							type="button">Post Status</button>
+						<ul class="list-inline">
+							<li></li>
+						</ul>
+					</form>
+				</div>
+
+			</div>
+			<div class="col-md-4 col-sm-6">
+
+				<div class="well">
+					<h4>Experience</h4>
+					<form>
+						<div class="form-group">
+							<label for="cname">Company Name</label>
+							<input id="cname" type="text" class="form-control" placeholder="Enter Company Name" disabled>
+							<button id="saveCname" class="btn btn-link pull-right" type="button">save</button>
+							<button id="editCname" class="btn btn-link pull-right" type="button">edit</button>
+							<div id="ajaxName"></div>
+
+						</div>
+
+						<div class="form-group">
+							<label for="title">Job Title</label>
+							<input id="title" type="text" class="form-control" placeholder="Enter Job Title" disabled>
+							<button id="saveTitle" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="editTitle" class="btn btn-link pull-right"
+								type="button">edit</button>
+						</div>
+						
+						<div class="form-group">
+							<label for="location">Location</label> <input id="location"
+								type="text" class="form-control" placeholder="Enter Location" disabled>
+							<button id="saveLocation" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="editLocation" class="btn btn-link pull-right"
+								type="button">edit</button>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>	
+		<!--row-->
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default ">
+					<div class="panel-heading">
+						<a href="#" class="pull-right">View all</a>
+						<h4>Following Users</h4>
+					</div>
+					<div class="panel-body">
+						<ul id="listForUser" class="list-group">
+
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+
+				<div class="well">
+					<h4>Education</h4>
+					<form>
+						<div class="form-group">
+							<label for="college">College</label> <input id="college"
+								type="text" class="form-control" placeholder="Enter College"
+								disabled>
+							<button id="saveCollege" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="addCollege" class="btn btn-link pull-right"
+								type="button">Add College</button>
+						</div>
+						<div class="form-group">
+							<label for="degree">Degree</label> <input id="degree"
+								type="text" class="form-control" placeholder="Enter Degree"
+								disabled>
+							<button id="saveDegree" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="addDegree" class="btn btn-link pull-right"
+								type="button">Add Degree</button>
+						</div>
+						<div class="form-group">
+							<label for="skills">Skills</label>
+							<textarea id="skill" class="form-control" placeholder="Skills"
+								disabled></textarea>
+							<!-- <ul id="listForSkill" class="list-group">
+                        
+                        
+                     </ul>-->
+							<button id="saveSkill" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="addSkill" class="btn btn-link pull-right"
+								type="button">Add Skills</button>
+						</div>
+						<!-- <div class="form-group">
+                    <label for="expiry">Expiry Date</label><br>
+                    <input type="date" class="form-control" name="expiry">
+                  </div>-->
+						<div class="form-group">
+							<label for="certification">Certification</label> <input
+								id="certification" type="text" class="form-control"
+								placeholder="Certification" disabled>
+							</textarea>
+							<!--<ul id="listForCertificate" class="list-group">
+                        
+                        
+                     </ul> -->
+							<button id="saveCertification" class="btn btn-link pull-right"
+								type="button">save</button>
+							<button id="addCertification" class="btn btn-link pull-right"
+								type="button">Add Certificates</button>
+						</div>
+						<!--<button class="btn btn-success pull-right" type="button">Post Job</button><ul class="list-inline"><li></li></ul>-->
+					</form>
+				</div>
+
+			</div>
+			
+			<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default ">
+					<div class="panel-heading">
+						<a href="#" class="pull-right">View all</a>
+						<h4>Following Companies</h4>
+					</div>
+					<div class="panel-body">
+						<ul id="listForCompany" class="list-group">
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/row-->
+		<!-- <div class="row">
+      <div class="col-md-12"><h2>Trends</h2></div>
+          <div class="col-md-6">
+          <div class="panel panel-default">
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>User Activities</h4></div>
+          <div class="panel-body">
+            <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Keyword: Bootstrap</a>
+            <div class="clearfix"></div>
+            <hr>
+            
+            <p>If you're looking for help with Bootstrap code, the <code>twitter-bootstrap</code> tag at <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap">Stackoverflow</a> is a good place to find answers.</p>
+            
+            <hr>
+            <form>
+            <div class="input-group">
+            <div class="input-group-btn">
+            <button class="btn btn-default">+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+            </div>
+            <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+            </form>
+            
+          </div>
+         </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="panel panel-default">
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Posts By Company</h4></div>
+          <div class="panel-body">
+            <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Keyword: Bootstrap</a>
+            <div class="clearfix"></div>
+            <hr>
+            
+            <p>If you're looking for help with Bootstrap code, the <code>twitter-bootstrap</code> tag at <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap">Stackoverflow</a> is a good place to find answers.</p>
+            
+            <hr>
+            <form>
+            <div class="input-group">
+            <div class="input-group-btn">
+            <button class="btn btn-default">+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+            </div>
+            <input type="text" class="form-control" placeholder="Add a comment..">
+            </div>
+            </form>
+            
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>-->
+		<div class="clearfix"></div>
+
+		<hr>
+		<div class="col-md-12 text-center">
+			<p>CmpE-282 CloudServices-LinkedIn Prototype</p>
+		</div>
+		<hr>
+
+	</div>
+	</div>
+	<!--/main-->
+
+	<!-- script references -->
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/ajaxCallsForUserProfile.js"></script>
+</body>
+</html>

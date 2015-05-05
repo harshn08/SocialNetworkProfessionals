@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>LinkedIn Prototype</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+	</head>
+<nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+          
+          <a href="/homePage" class="navbar-brand">LinkedIn Prototype</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+          <i class="glyphicon glyphicon-search"></i>
+          </button>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+        </div>	
+     </div>	
+</nav>
+<div class="navbar navbar-default" id="subnav">
+	<div class="col-md-12">
+        <div class="navbar-header">
+			<a href="/homePage" style="margin-left: 15px;"
+				class="navbar-btn btn btn-default btn-plus dropdown-toggle">Home</a>	
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse2">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+			</ul>
+		</div>
+    </div>  
+</div>
+
+<!--main-->
+<div class="container" id="main">
+   <!--row-->
+   <div class="row">
+   <div class="col-md-6 col-sm-6">
+      
+      <div class="well">
+          
+          <h4 id="username"></h4>
+                  
+
+           <img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=70" class="img-circle pull-right">
+         </br>
+          <form>
+
+
+                <input id="userid" type="hidden" class="form-control" placeholder="Company Id" value="002" >
+                <div class="form-group">
+                
+                  <div id="ajaxName"> </div>
+                
+                </div>
+                
+                <div class="form-group">
+                  <label for="overview">Bio</label>
+                  <textarea id="bio" class="form-control" disabled></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="website">Status</label>
+                  <input id="status" type="text" class="form-control" disabled>
+                 
+                </div>
+
+                <div class="form-group">
+                  <button class="btn followButton" rel="6">Follow</button>
+                </div>
+                
+            </form>
+      </div>
+
+	</div>
+
+  	<div class="col-md-6 col-sm-6">
+      	 
+          <div class="well"> 
+            <h4>Education</h4>
+
+              <form>
+
+                  <div class="form-group">
+
+                    <label for="college">College</label>
+                    <!--<input id="college" type="text" class="form-control" placeholder="Enter College" disabled> -->
+                     <ul id="listForCollege" class="list-group">
+                        
+
+                     </ul>
+                  </div>
+                  <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <!--<textarea id="skill" class="form-control" placeholder="Skills" disabled></textarea>-->
+
+                    <ul id="listForSkill" class="list-group">
+                        
+                        
+                     </ul>
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="certification">Certification</label>
+                    <!--<input id="certification" type="text" class="form-control" placeholder="Certification" disabled></textarea> -->
+                      <ul id="listForCertificate" class="list-group">
+                        
+                        
+                     </ul>
+                  </div>
+                 
+              </form>
+          </div>
+      
+  	</div>
+
+  
+
+ <!-- </div>/row-->
+    
+   <!-- <div class="row">-->
+        <div class="col-md-6 col-sm-6">
+        <div class="panel panel-default " >
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Following Users</h4></div>
+          <div class="panel-body">
+            <ul id="listForUser" class="list-group">
+              
+
+            </ul>
+          </div>
+         </div>
+        </div>
+       <!-- <div class="col-md-4 col-sm-6">
+        </div>-->
+        <div class="col-md-6 col-sm-6">
+        <div class="panel panel-default " >
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Following Companies</h4></div>
+          <div class="panel-body">
+            <ul id="listForCompany" class="list-group">
+            
+            </ul>
+          </div>
+         </div>
+        </div>
+    
+    </div>
+    
+   
+    <div class="clearfix"></div>
+      
+    <hr>
+    <div class="col-md-12 text-center"><p>CmpE-282 CloudServices-LinkedIn Prototype</p></div>
+    <hr>
+    
+  </div>
+</div><!--/main-->
+
+	<!-- script references -->
+	<script src="./js/jquery-1.11.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/ajaxCallsForPortfolio.js"></script>
+	</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>LinkedIn Prototype</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style type="text/css">
+	    #searchbar{
+	      margin-left: 300px;
+	      width: 500px;
+	    }
+    </style>
+    <!-- script references -->
+	  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/scripts.js"></script>
+	  <script type="text/javascript">
+		function getUserDetails() {
+			$.get("/getUserFromSession", function(user) {
+				console.log("USer from session :: "+user);
+			});
+		}
+  	   </script>
+  </head>
+<body onload="getUserDetails()">
+		<nav class="navbar navbar-fixed-top header">
+		  <div class="col-md-12">
+		        <div class="navbar-header">
+		          
+		          <input id="userid" type="hidden" value=<%= user %>>
+
+		          <a href="#" class="navbar-brand">LinkedIn Prototype</a>
+		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+		          <i class="glyphicon glyphicon-search"></i>
+		          </button>
+		      
+		        </div>
+
+		        <div class="collapse navbar-collapse" id="navbar-collapse1">
+		        </div>  
+		     </div> 
+		</nav>
+		<div class="navbar navbar-default" id="subnav">
+		    <div class="col-md-12">
+		        <div class="navbar-header">
+		          <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"></i> Home <small></small></a>
+		        </div>
+		    </div>  
+		</div>
+
+<!--main-->
+	<div class="navbar navbar-fixed-top header">
+	    <div class="col-md-12">
+	      <div class="navbar-header">
+	        <a href="/homePage" class="navbar-brand">Linkedin Prototype</a>
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+	        <i class="glyphicon glyphicon-search"></i>
+	        </button>
+	      </div>  
+	    </div> 
+    </div>
+    
+    <div class="navbar navbar-default" id="subnav">
+      <div class="col-md-12">
+	       <div class = "navbar-header">
+	          	<a href="/homePage" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Home <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
+	          	<ul class="nav dropdown-menu">
+	              <li id="profile"><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> Profile</a></li>
+	              <li id="job"><a href="#"><i class="glyphicon glyphicon-inbox" style="color:#11dd11;"></i> Jobs</a></li>
+	              <li class="nav-divider"></li>
+	              <li id="search"><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Search</a></li>
+	          	</ul>
+	        </div>
+
+	        <div class="collapse navbar-collapse" id="navbar-collapse2">
+	          <ul class="nav navbar-nav navbar-right">
+	          	<%if((typeof lastLoggedIn != 'undefined') && lastLoggedIn != ""){%>	
+	          	    <li><a>Last Logged in :  <%=lastLoggedIn%></a></li>	
+	          	<%}%>
+	           		<li><a href="/logout" role="button" data-toggle="modal">Logout</a></li>
+	           </ul>
+	        </div>  
+       </div> 
+    </div>
+
+    <!--main-->
+    <div class="container" id="main">
+	    <div class="row">
+	    	<div class="col-md-4 col-sm-6">
+		        <div class="panel panel-default" id="panel">
+		          <div class="panel-heading"><h4 id="name">Name: </h4></div>
+		          <div class="panel-body"></div>
+		         </div> 
+		    </div>
+	   		<div class="col-md-4 col-sm-6">
+		        <div class="panel panel-default" id = "panel">
+			        <div class="panel-heading"><h4>User Newsfeed</h4></div>
+			        <div id="panel-body" class="panel-body"></div>
+		        </div>
+	    	</div> 
+	    	<div class="col-md-4 col-sm-6">
+		        <div class="panel panel-default" id = "panel">
+			        <div class="panel-heading"><h4>Company Newsfeed</h4></div>
+			        <div id="company-body" class="panel-body"></div>
+		        </div>
+	    	</div> 
+	    </div>
+	    <div class="row">
+	   		<div class="col-md-4 col-sm-6">
+		        <div class="panel panel-default" id = "panel">
+			        <div class="panel-heading"><h4>Recommended Users</h4></div>
+			        <div id="userrec-body" class="panel-body"></div>
+		        </div>
+	    	</div> 
+	    	<div class="col-md-4 col-sm-6">
+		        <div class="panel panel-default" id = "panel">
+			        <div class="panel-heading"><h4>Recommended Jobs</h4></div>
+			        <div id="jobrec-body" class="panel-body"></div>
+		        </div>
+	    	</div> 
+	    </div>
+    </div>
+    <!--/main-->
+  	<script src="js/ajaxcallsforhome.js"></script>
+</body>
+</html>
