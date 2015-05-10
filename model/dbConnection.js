@@ -14,8 +14,8 @@ function getRedisConnection(){
 
 var $credentials = {
 
-		"accessKeyId": "AKIAJMDAJG5DEC4CIWXA", 
-		"secretAccessKey": "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", 
+		"accessKeyId": "", 
+		"secretAccessKey": "", 
 		"region": "us-west-1"
 
 }
@@ -48,15 +48,15 @@ exports.getPoolInstance = function(){
 	{
 		pool  = mysql.createPool({
 
-			host     : 'cmpe282lab.cckbiaous4u7.us-west-1.rds.amazonaws.com',
+			host     : '',
 
-			user     : 'CMPE282',
+			user     : '',
 
-			password : 'cmpe282shim',
+			password : '',
 
 			port : '3306',
 
-			database : 'linkedin_prototype'
+			database : ''
 
 		});
 		return pool;
